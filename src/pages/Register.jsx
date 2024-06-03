@@ -1,11 +1,20 @@
 import React from "react";
+import login_page from "../../public/login_page.jpg";
 
 const Register = () => {
   return (
     <div>
-      <div className="hero min-h-screen bg-base-200">
-        <div className="hero-content flex-col lg:flex-row-reverse">
-          <div className="text-center lg:text-left">
+      <div
+        className="hero min-h-screen bg-base-200"
+        style={{
+          backgroundImage: `url(${login_page})`,
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="hero-content">
+          <div className="text-center w-1/4 lg:text-left">
             <h1 className="text-5xl font-bold">Register now!</h1>
             <p className="py-6">
               Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
