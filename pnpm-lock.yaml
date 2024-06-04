@@ -11,6 +11,12 @@ importers:
       firebase:
         specifier: ^10.12.2
         version: 10.12.2
+      prop-types:
+        specifier: ^15.8.1
+        version: 15.8.1
+      props-validator:
+        specifier: ^0.1.0
+        version: 0.1.0
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -1634,6 +1640,9 @@ packages:
 
   prop-types@15.8.1:
     resolution: {integrity: sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==}
+
+  props-validator@0.1.0:
+    resolution: {integrity: sha512-dXYYKz6n9MQKGmetaVxB0xOra/bOoDdUKvMESLYTDWouBMSV6t0Dow5oI3zi3krAuORRTrMI0mllg5jcKhfhpg==}
 
   protobufjs@7.3.0:
     resolution: {integrity: sha512-YWD03n3shzV9ImZRX3ccbjqLxj7NokGN0V/ESiBV5xWqrommYHYiihuIyavq03pWSGqlyvYUFmfoMKd+1rPA/g==}
@@ -3790,6 +3799,8 @@ snapshots:
       loose-envify: 1.4.0
       object-assign: 4.1.1
       react-is: 16.13.1
+
+  props-validator@0.1.0: {}
 
   protobufjs@7.3.0:
     dependencies:

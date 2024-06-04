@@ -1,6 +1,37 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut()
+      .then(() => console.log("Use Logout Successfully"))
+      .catch((error) => console.error(error));
+  };
+
+  const navLinks = (
+    <div className="flex uppercase">
+      <li>
+        <a>Home</a>
+      </li>
+      <li>
+        <a>Services</a>
+      </li>
+      <li>
+        <a>Projects</a>
+      </li>
+      <li>
+        <a>Shop</a>
+      </li>
+      <li>
+        <a>Blog</a>
+      </li>
+      <li>
+        <a>Contact</a>
+      </li>
+    </div>
+  );
   return (
     <div>
       <div className="navbar bg-base-100">
@@ -26,25 +57,13 @@ const Navbar = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
-              <li>
-                <a>Item 1</a>
-              </li>
-              <li>
-                <a>Item 3</a>
-              </li>
+              {navLinks}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">daisyUI</a>
+          <a className="btn btn-ghost text-xl">ShowUp</a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
-          </ul>
+          <ul className="menu menu-horizontal px-1">{navLinks}</ul>
         </div>
         <div className="navbar-end">
           <div className="bg-base-100">
@@ -66,18 +85,29 @@ const Navbar = () => {
                   tabIndex={0}
                   className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
                 >
-                  <li>
-                    <a className="justify-between">
-                      Profile
-                      <span className="badge">New</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a>Settings</a>
-                  </li>
-                  <li>
-                    <a>Logout</a>
-                  </li>
+                  {user ? (
+                    <>
+                      {" "}
+                      <li>
+                        <a className="justify-between">{user?.email}</a>
+                      </li>
+                      <li>
+                        <Link to={"/dashboard"}>Dashboard</Link>
+                      </li>
+                      <li>
+                        <a onClick={handleLogOut}>LogOut</a>
+                      </li>
+                    </>
+                  ) : (
+                    <>
+                      <li>
+                        <Link to={"/login"}>Login</Link>
+                      </li>
+                      <li>
+                        <Link to={"/registration"}>Registation</Link>
+                      </li>
+                    </>
+                  )}
                 </ul>
               </div>
             </div>
