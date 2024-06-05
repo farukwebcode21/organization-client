@@ -2,24 +2,27 @@ import React, { useContext } from "react";
 import login_page from "../../public/login_page.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
+import GoogleLogin from "../components/GoogleLogin";
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value.trim();
     const password = form.password.value.trim();
-    createUser(email, password)
-      .then((result) => {
-        console.log(result.user);
-        navigate("/");
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    try {
+      const result = createUser(email, password);
+      console.log(result.user);
+      alert("Registation Successfully");
+      form.reset();
+      navigate("/");
+    } catch (error) {
+      console.error(error);
+      alert("Registation Failed. Please check Your Problem !");
+    }
   };
   return (
     <div>
@@ -90,6 +93,7 @@ const Register = () => {
                 <button className="btn btn-primary">Register</button>
               </div>
             </form>
+            <GoogleLogin />
             <div className="flex justify-center mb-5">
               <p>
                 Already have an account?{" "}

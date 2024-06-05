@@ -12,20 +12,13 @@ const DashboardLayout = () => {
             htmlFor="my-drawer-2"
             className="btn btn-primary drawer-button lg:hidden"
           >
-            Home
+            Menu Drawer
           </label>
         </div>
         <div className="drawer-side ">
-          <label
-            htmlFor="my-drawer-2"
-            aria-label="close sidebar"
-            className="drawer-overlay"
-          >
-            Organization
-          </label>
           <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
             <li>
-              <Link to={"/dashboard"}>Home Dashboard</Link>
+              <Link to={"/"}>Home</Link>
             </li>
             <li>
               <Link to={"/dashboard/all-product"}>All Product</Link>
@@ -40,6 +33,7 @@ const DashboardLayout = () => {
               <a>Sidebar Item 2</a>
             </li>
           </ul>
+          <button>Logut</button>
         </div>
       </div>
     </div>

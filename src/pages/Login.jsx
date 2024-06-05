@@ -2,27 +2,28 @@ import React, { useContext } from "react";
 import login_page from "../../public/login_page.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
+import GoogleLogin from "../components/GoogleLogin";
 
 const Login = () => {
   const { loginUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const handleUserLogin = (e) => {
+  const handleUserLogin = async (e) => {
     e.preventDefault();
 
     const form = e.target;
     const email = form.email.value.trim();
     const password = form.password.value.trim();
-    console.log(email, password);
-    loginUser(email, password)
-      .then((result) => {
-        console.log(result.user);
-        alert("Successfull login user:");
-        navigate("/");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    try {
+      const result = await loginUser(email, password);
+      console.log(result.user);
+      alert("Successfully logged in!");
+      form.reset();
+      navigate("/");
+    } catch (error) {
+      console.error(error);
+      alert("Login failed. Please check and try again");
+    }
   };
   return (
     <div
@@ -51,6 +52,7 @@ const Login = () => {
               </label>
               <input
                 type="email"
+                id="email"
                 placeholder="email"
                 name="email"
                 className="input input-bordered"
@@ -63,6 +65,7 @@ const Login = () => {
               </label>
               <input
                 type="password"
+                id="password"
                 name="password"
                 placeholder="password"
                 className="input input-bordered"
@@ -74,10 +77,11 @@ const Login = () => {
                 </a>
               </label>
             </div>
-            <div className="form-control mt-6">
+            <div className="form-control mt-4">
               <button className="btn btn-primary">Login</button>
             </div>
           </form>
+          <GoogleLogin />
           <div className="flex justify-center mb-5">
             <p>
               New user ?{" "}
