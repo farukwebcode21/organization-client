@@ -13,13 +13,13 @@ const Navbar = () => {
   const navLinks = (
     <div className="flex uppercase">
       <li>
-        <a>Home</a>
+        <Link to={"/"}>Home</Link>
       </li>
       <li>
-        <a>Services</a>
+        <Link to={"/services"}>Services</Link>
       </li>
       <li>
-        <a>Projects</a>
+        <Link to={"/team"}>Team</Link>
       </li>
       <li>
         <a>Shop</a>
@@ -28,7 +28,7 @@ const Navbar = () => {
         <a>Blog</a>
       </li>
       <li>
-        <a>Contact</a>
+        <Link to={"/contact"}>Contact</Link>
       </li>
     </div>
   );
@@ -95,7 +95,7 @@ const Navbar = () => {
                         <Link to={"/dashboard"}>Dashboard</Link>
                       </li>
                       <li>
-                        <a onClick={handleLogOut}>LogOut</a>
+                        <a onClick={handleLogOut}>Logout</a>
                       </li>
                     </>
                   ) : (
@@ -104,7 +104,7 @@ const Navbar = () => {
                         <Link to={"/login"}>Login</Link>
                       </li>
                       <li>
-                        <Link to={"/registration"}>Registation</Link>
+                        <Link to={"/signup"}>Signup</Link>
                       </li>
                     </>
                   )}

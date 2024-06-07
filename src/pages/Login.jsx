@@ -1,12 +1,15 @@
 import React, { useContext } from "react";
 import login_page from "../../public/login_page.jpg";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import GoogleLogin from "../components/GoogleLogin";
 
 const Login = () => {
   const { loginUser } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  console.log("Location in the login page", location);
 
   const handleUserLogin = async (e) => {
     e.preventDefault();
@@ -19,7 +22,7 @@ const Login = () => {
       console.log(result.user);
       alert("Successfully logged in!");
       form.reset();
-      navigate("/");
+      navigate(location?.state ? location.state : "/");
     } catch (error) {
       console.error(error);
       alert("Login failed. Please check and try again");
@@ -85,8 +88,8 @@ const Login = () => {
           <div className="flex justify-center mb-5">
             <p>
               New user ?{" "}
-              <Link className="text-green-600" to={"/registration"}>
-                Register Here
+              <Link className="text-green-600" to={"/signup"}>
+                Signup
               </Link>
             </p>
           </div>

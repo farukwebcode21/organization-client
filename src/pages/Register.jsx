@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
 import login_page from "../../public/login_page.jpg";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import GoogleLogin from "../components/GoogleLogin";
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -18,7 +19,7 @@ const Register = () => {
       console.log(result.user);
       alert("Registation Successfully");
       form.reset();
-      navigate("/");
+      navigate(location?.state ? location.state : "/");
     } catch (error) {
       console.error(error);
       alert("Registation Failed. Please check Your Problem !");
@@ -90,7 +91,7 @@ const Register = () => {
                 />
               </div> */}
               <div className="form-control mt-6">
-                <button className="btn btn-primary">Register</button>
+                <button className="btn btn-primary">Signup</button>
               </div>
             </form>
             <GoogleLogin />

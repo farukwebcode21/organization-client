@@ -10,6 +10,9 @@ import { HomeDashboard } from "../pages/dashboard/homeDashboard";
 import AllProducts from "../pages/dashboard/AllProducts";
 import AddProduct from "../pages/dashboard/AddProduct";
 import PrivateRoute from "./PrivateRoute";
+import Services from "../pages/Services";
+import Contact from "../pages/Contact";
+import Team from "../pages/Team";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +24,18 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home />,
       },
+      {
+        path: "services",
+        element: <Services />,
+      },
+      {
+        path: "team",
+        element: <Team />,
+      },
+      {
+        path: "contact",
+        element: <Contact />,
+      },
     ],
   },
   {
@@ -28,7 +43,7 @@ const router = createBrowserRouter([
     element: <Login />,
   },
   {
-    path: "registration",
+    path: "signup",
     element: <Register />,
   },
   {
